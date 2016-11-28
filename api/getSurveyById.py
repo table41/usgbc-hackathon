@@ -30,6 +30,8 @@ def lambda_handler(event, context):
 
     ddb = boto3.client('dynamodb')
 
-    survey = ddb.get_item(TableName='Surveys', Key={'survey_id': {'S':'test12345'}})['Item']
+    survey_id = event['pathParameters']['id']
+
+    survey = ddb.get_item(TableName='Surveys', Key={'survey_id': {'S':survey_id}})['Item']
 
     return unmarshalJson(survey)
