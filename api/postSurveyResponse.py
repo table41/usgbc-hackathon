@@ -16,10 +16,10 @@ def lambda_handler(event, context):
 
         return {
             "statusCode": "200",
-            "body": "Added response: " + item.response_id
+            "body": json.dumps({"success": item.response_id})
         }
     except Exception as e:
         return {
             "statusCode": "500",
-            "body": str(e)
+            "body": json.dumps({"error": str(e)})
         }
