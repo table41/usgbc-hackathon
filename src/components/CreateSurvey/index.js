@@ -10,10 +10,10 @@ export default class CreateSurvey extends Component {
   // state = {}
 
   render() {
-    const { className, ...props } = this.props;
+    const className = this.props.className;
     return (
       <div
-        className={classnames('CreateSurvey', className)} {...props}>
+        className={classnames('CreateSurvey', className)}>
         <Grid>
           <Row>
             <h1>Create Survey</h1>
