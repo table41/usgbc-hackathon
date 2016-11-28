@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/usgbc
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeinstall.sh
+      runas: ec2-user
+  AfterInstall:
+    - location: scripts/afterinstall.sh
+      timeout: 180
+  ApplicationStart:
+    - location: scripts/applicationstart.sh
+      timeout: 1200
+      runas: ec2-user
