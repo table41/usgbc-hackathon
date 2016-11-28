@@ -25,6 +25,13 @@ def unmarshalValue(node, mapAsObject):
                 data.append(unmarshalValue(item, mapAsObject))
             return data
 
+def lambda_return(body):
+    return_object = {
+        "statusCode": 200,
+        "body": json.dumps(body)
+    }
+    return return_object
+
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
 
@@ -34,4 +41,4 @@ def lambda_handler(event, context):
 
     survey = ddb.get_item(TableName='Surveys', Key={'survey_id': {'S':survey_id}})['Item']
 
-    return unmarshalJson(survey)
+    return lambda_return(unmarshalJson(survey))

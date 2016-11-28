@@ -25,6 +25,13 @@ def unmarshalValue(node, mapAsObject):
                 data.append(unmarshalValue(item, mapAsObject))
             return data
 
+def lambda_return(body):
+    return_object = {
+        "statusCode": 200,
+        "body": json.dumps(body)
+    }
+    return return_object
+
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
 
@@ -36,6 +43,6 @@ def lambda_handler(event, context):
 
     for page in pages:
         print("Found Surveys:" + json.dumps(page['Items'], indent=2))
-        survey_list += unmarshalJson(page['Items'])
+        survey_list += page['Items']
 
-    return survey_list
+    return lambda_return([unmarshalJson(item) for item in survey_list])
