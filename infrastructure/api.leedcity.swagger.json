@@ -50,6 +50,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getOverallLeaderboard/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       }
@@ -89,6 +90,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getLocationLeaderboard/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       }
@@ -128,6 +130,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getSurveys/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       },
@@ -167,6 +170,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:postSurvey/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "POST",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       }
@@ -246,6 +250,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getSurveyResponses/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       },
@@ -285,6 +290,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:postSurveyResponse/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "POST",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       }
@@ -324,6 +330,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getSurveyResponseById/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       }
@@ -363,6 +370,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getUserScore/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       },
@@ -409,6 +417,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:postUserScore/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "POST",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       }
