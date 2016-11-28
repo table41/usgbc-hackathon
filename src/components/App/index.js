@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import FacebookLogin from 'react-facebook-login';
 
 import logo from './logo.svg';
 import './style.css';
@@ -10,16 +9,10 @@ class App extends Component {
     super(props);
     this.state = {};
   }
-
-  responseFacebook = (response) => {
-    console.log(response);
-    this.setState({
-      fbObject: response
-    });
-  };
-
+  
   render() {
     const className = this.props.className;
+    const {children} = this.props;
     console.log(this.state);
     return (
       <div className={classnames('App', className)}>
@@ -28,13 +21,7 @@ class App extends Component {
           <h2>LEED City</h2>
         </div>
         <img src={this.state.fbObject ? this.state.fbObject.picture.data.url : ''} alt="facebook" />
-        <FacebookLogin
-          appId="211863512589812"
-          autoLoad={true}
-          fields="name,email,picture"
-          scope="public_profile,user_friends,user_actions.books"
-          callback={this.responseFacebook}
-        />
+        {children}
       </div>
     );
   }
