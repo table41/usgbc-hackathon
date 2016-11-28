@@ -433,8 +433,14 @@
     "Survey": {
       "type": "object",
       "properties": {
-        "survey": {
-          "type": "object"
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SurveyQuestion"
+          }
         }
       }
     },
@@ -442,6 +448,23 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/Survey"
+      }
+    },
+    "SurveyQuestion": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string"
+        },
+        "questionType": {
+          "type": "string"
+        },
+        "selectableAnswers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "SurveyResponse": {
