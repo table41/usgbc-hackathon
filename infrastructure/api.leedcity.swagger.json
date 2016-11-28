@@ -54,7 +54,7 @@
         }
       }
     },
-    "/leaderboards/{cityId}": {
+    "/leaderboards/{locationId}": {
       "get": {
         "tags": [
           "leaderboards"
@@ -62,10 +62,10 @@
         "produces": [
           "application/json"
         ],
-        "summary": "Get the leaderboard for a specific city",
+        "summary": "Get the leaderboard for a specific location",
         "parameters": [
           {
-            "name": "cityId",
+            "name": "locationId",
             "in": "path",
             "description": "ID of the city",
             "required": true,
@@ -74,7 +74,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved the leaderboard for the city",
+            "description": "Retrieved the leaderboard for the location",
             "schema": {
               "$ref": "#/definitions/Leaderboard"
             }
@@ -86,7 +86,7 @@
               "statusCode": "200"
             }
           },
-          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getCityLeaderboard/invocations",
+          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getLocationLeaderboard/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
           "type": "aws_proxy"
