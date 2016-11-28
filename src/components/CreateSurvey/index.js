@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { FormControl, FormGroup, ControlLabel, Button, Grid, Row, Col } from 'react-bootstrap';
+import { FormControl, FormGroup, ControlLabel, Button, Grid, Row } from 'react-bootstrap';
 
 import './style.css';
 
@@ -27,13 +27,19 @@ export default class CreateSurvey extends Component {
               </FormGroup>
             </Row>
             <Row>
-              <FormGroup controlId="questionType">
-                <ControlLabel>
-                  Question Type
-                </ControlLabel>
-                <FormControl componentClass="select">
-                  <option>Multiple Selection</option>
-                  <option>Drop Down</option>
+              <FormGroup controlId="questionPrompt">
+                <ControlLabel>Question Prompt</ControlLabel>
+                <FormControl
+                  type="text"
+                  placeholder="Enter the question prompt"
+                />
+              </FormGroup>
+            </Row>
+            <Row>
+              <FormGroup controlId="answerType">
+                <ControlLabel>Answer Type</ControlLabel>
+                <FormControl componentClass="select" placeholder="Select a Type">
+                  <option value="select">Select a Type</option>
                   <option>Star Rating</option>
                   <option>Free Text</option>
                 </FormControl>
