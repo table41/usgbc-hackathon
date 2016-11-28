@@ -5,11 +5,11 @@
     "description": "LEED Cities for Citizens API",
     "version": "0.0.1"
   },
-  "host": "",
+  "host": "https://3twwdo05lg.execute-api.us-west-2.amazonaws.com",
   "schemes": [
     "https"
   ],
-  "basePath": "/v1",
+  "basePath": "/prod",
   "produces": [
     "application/json"
   ],
@@ -206,6 +206,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:474187235891:function:getSurveyById/invocations",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "credentials": "arn:aws:iam::474187235891:role/service-role/lambda_execution",
           "type": "aws_proxy"
         }
       }
@@ -433,7 +434,16 @@
     "Survey": {
       "type": "object",
       "properties": {
+        "survey_id": {
+          "type": "string"
+        },
         "name": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "location": {
           "type": "string"
         },
         "questions": {
