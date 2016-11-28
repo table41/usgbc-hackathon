@@ -10,15 +10,16 @@ class App extends Component {
   // state = {}
 
   render() {
-    const { className, ...props } = this.props;
+    const className = this.props.className;
     return (
-      <div className={classnames('App', className)} {...props}>
+      <div className={classnames('App', className)}>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>LEED City</h2>
         </div>
         <p className="App-intro">
-          Nothing to see here, run along.
+          Nothing to see here, run along.<br />
+          Updated.
         </p>
       </div>
     );

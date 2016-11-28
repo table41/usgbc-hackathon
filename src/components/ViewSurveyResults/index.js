@@ -9,9 +9,9 @@ export default class ViewSurveyResults extends Component {
   // state = {}
 
   render() {
-    const { className, ...props } = this.props;
+    const className = this.props.className;
     return (
-      <div className={classnames('ViewSurveyResults', className)} {...props}>
+      <div className={classnames('ViewSurveyResults', className)}>
         <h1>Results for {this.props.params.surveyId}</h1>
       </div>
     );
