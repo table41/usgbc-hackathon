@@ -14,9 +14,11 @@ export default class CreateSurvey extends Component {
     return (
       <div
         className={classnames('CreateSurvey', className)} {...props}>
-        <h1>Create Survey</h1>
-        <form>
-          <Grid>
+        <Grid>
+          <Row>
+            <h1>Create Survey</h1>
+          </Row>
+          <form>
             <Row>
               <FormGroup controlId="surveyNameInput">
                 <ControlLabel>Name of the Survey</ControlLabel>
@@ -47,11 +49,11 @@ export default class CreateSurvey extends Component {
             </Row>
             <Row>
               <Button type="submit" bsStyle="primary">
-                Add a Question
+                Save
               </Button>
             </Row>
-          </Grid>
-        </form>
+          </form>
+        </Grid>
       </div>
     );
   }
