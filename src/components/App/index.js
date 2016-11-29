@@ -5,6 +5,17 @@ import FacebookLogin from 'react-facebook-login';
 import logo from './logo.png';
 import './style.css';
 
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,11 +25,20 @@ class App extends Component {
     }
   }
 
-  render() {
-    const className = this.props.className;
-    const {children} = this.props;
-    console.log(this.state);
-    this.responseFacebook = (response) => {
+  
+  success = (pos) => {
+    var crd = pos.coords;
+
+    console.log('Your current position is:');
+    console.log('Latitude : ' + crd.latitude);
+    console.log('Longitude: ' + crd.longitude);
+    console.log('More or less ' + crd.accuracy + ' meters.');
+    this.setState({
+          location: crd
+        });
+  };
+
+  responseFacebook = (response) => {
       console.log(response);
       this.setState({
         fbObject: response
@@ -26,6 +46,15 @@ class App extends Component {
 
     };
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(this.success, error, options);
+  }
+
+  render() {
+    const className = this.props.className;
+    const {children} = this.props;
+    console.log(this.state);
+  
     return (
       <div className={classnames('App', className)}>
         <div className="App-header">
