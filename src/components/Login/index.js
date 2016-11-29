@@ -10,14 +10,14 @@ function Objective(props) {
 }
 
 class Login extends Component {
-  
+
 
   render() {
     const className = this.props.className;
     return (
       <div className={classnames('Login', className)}>
-        
-        <Link to={`/home`}>Continue to Login</Link>
+
+        <Link to={`/home`}>View Current Environmental Questionnaires in your area.</Link>
         <Goal name="Together, we can" />
         <Objective name="Reduce energy, water, waste consumption" />
         <Objective name="Reduce pollution & CO2 Emissions" />

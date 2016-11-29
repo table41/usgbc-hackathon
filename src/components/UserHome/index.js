@@ -27,8 +27,9 @@ class UserHome extends Component {
       .then(response => response.json())
       .then(json => {
         console.log(json);
+        let surveys = json.length ? json : [{name:'No Current Surveys in your area.'}];
         this.setState({
-          surveys: json
+          surveys: surveys
         });
       });
   };
@@ -47,7 +48,7 @@ class UserHome extends Component {
 
   render () {
     const className = this.props.className;
-    const surveys = this.state.surveys || [];
+    const surveys = this.state.surveys || [{name:'Loading Surveys'}];
     console.log('Current State', this.state);
     return (
       <div className={classnames('UserHome', className)}>
@@ -57,7 +58,10 @@ class UserHome extends Component {
               <ul className="list-group">
                 {surveys.map((survey, index) => (
                   <li className="list-group-item" key={index}>
-                    <a href={`/survey/${survey.survey_id}/`}>{survey.name}</a>
+                    { survey.survey_id ?
+                      <a href={`/survey/${survey.survey_id}/`}>{survey.name}</a> :
+                      survey.name
+                    }
                   </li>
                 ))}
               </ul>
