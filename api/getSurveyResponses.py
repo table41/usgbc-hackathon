@@ -1,37 +1,10 @@
 from __future__ import print_function
+from usbgc_helpers import *
 
 import json
 import urllib
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
-
-def unmarshalJson(node):
-    data = {}
-    data["M"] = node
-    return unmarshalValue(data, True)
-
-def unmarshalValue(node, mapAsObject):
-    for key, value in node.items():
-        if(key == "S" or key == "N"):
-            return value
-        if(key == "M" or key == "L"):
-            if(key == "M"):
-                if(mapAsObject):
-                    data = {}
-                    for key1,value1 in value.items():
-                        data[key1] = unmarshalValue(value1, mapAsObject)
-                    return data
-            data = []
-            for item in value:
-                data.append(unmarshalValue(item, mapAsObject))
-            return data
-
-def lambda_return(body):
-    return_object = {
-        "statusCode": 200,
-        "body": json.dumps(body)
-    }
-    return return_object
 
 def extract_survey_id(queryStringParameters):
     if queryStringParameters == None:

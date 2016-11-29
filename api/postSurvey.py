@@ -1,43 +1,21 @@
 from __future__ import print_function
+from usbgc_helpers import *
 
 import json
 import urllib
 import boto3
 
-
-def marshalNode(node):
-    if isinstance(node, dict):
-        return {k: marshalValue(v) for k, v in node.iteritems()}
-
-
-def marshalValue(value):
-    data = {}
-    if isinstance(value, basestring):
-        data["S"] = value
-    elif isinstance(value, int) or isinstance(value, long) or isinstance(value, float):
-        data["S"] = str(value)
-    elif isinstance(value, list):
-        data["L"] = [marshalValue(x) for x in value]
-    elif isinstance(value, dict):
-        data["M"] = {k: marshalValue(v) for k, v in value.iteritems()}
-    return data
-
-
 def lambda_handler(event, context):
-    try:
-        print("Received event: " + json.dumps(event, indent=2))
+    print("Received event: " + json.dumps(event, indent=2))
 
-        ddb = boto3.client('dynamodb')
+    ddb = boto3.client('dynamodb')
+    paginator = ddb.get_paginator('scan')
 
-        item = json.loads(event['body'])
-        response = ddb.put_item(TableName='Surveys', Item=marshalNode(item))
+    survey_list = list()
 
-        return {
-            "statusCode": "200",
-            "body": json.dumps({"success": item['survey_id']})
-        }
-    except Exception as e:
-        return {
-            "statusCode": "500",
-            "body": json.dumps({"error": str(e)})
-        }
+    for page in pages:
+        print("Found Surveys:" + json.dumps(page['Items'], indent=2))
+        for survey in page['Items']:
+            survey_list += survey
+
+    return survey_list
