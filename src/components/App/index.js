@@ -64,11 +64,13 @@ class App extends Component {
         </div>
         <Grid>
           <Row>
-            <Col md={6} className="text-right">
+            <Col md={2}>
+            </Col>
+            <Col md={3} className="text-right smallTopMargin">
               <img src={this.state.fbObject ? this.state.fbObject.picture.data.url : ''} alt="facebook" />
             </Col>
             <Col md={6} className="text-left">
-              <p>Hello{ this.state.fbObject ? `, ${this.state.fbObject.name}` : '' }</p>
+              <h3>Hello{ this.state.fbObject ? `, ${this.state.fbObject.name}` : '' }</h3>
             </Col>
           </Row>
         </Grid>
