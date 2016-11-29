@@ -45,6 +45,8 @@ def location_within_range(current, survey):
         return False
 
 def extract_current_location(queryStringParameters):
+    if queryStringParameters == None:
+        queryStringParameters = {}
     lon = queryStringParameters.get('lon', False)
     lat = queryStringParameters.get('lat', False)
     if lon and lat:
@@ -56,7 +58,7 @@ def extract_current_location(queryStringParameters):
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
 
-    current_location = extract_current_location(event.get('queryStringParameters', {}))
+    current_location = extract_current_location(event['queryStringParameters'])
     ddb = boto3.client('dynamodb')
     paginator = ddb.get_paginator('scan')
     pages = paginator.paginate(TableName='Surveys')
