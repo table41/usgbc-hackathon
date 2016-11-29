@@ -38,11 +38,15 @@ def location_within_range(current, survey):
     survey_loc = (int(survey['lon']), int(survey['lat']))
     distance = vincenty(survey_loc, current).meters
     if distance <= int(survey['radius']):
+        if distance == 0:
+            distance = 1
         return distance
     else:
         return False
 
 def extract_current_location(queryStringParameters):
+    if queryStringParameters == None:
+        queryStringParameters = {}
     lon = queryStringParameters.get('lon', False)
     lat = queryStringParameters.get('lat', False)
     if lon and lat:
@@ -64,13 +68,12 @@ def lambda_handler(event, context):
     for page in pages:
         for survey in page['Items']:
             survey = unmarshalJson(survey)
-            print(json.dumps(survey, indent=2))
             if current_location:
                 distance = location_within_range(current_location, survey['location'])
                 if distance:
                     print("Found Survey %s within range %s meters, distance %s" % (survey['survey_id'], survey['location']['radius'], distance))
-                    relevant_surveys += survey
+                    relevant_surveys.append(survey['survey_id'])
             else:
-                relevant_surveys += survey
+                relevant_surveys.append(survey['survey_id'])
 
     return lambda_return(relevant_surveys)
