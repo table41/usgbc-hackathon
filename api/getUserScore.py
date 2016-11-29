@@ -17,6 +17,9 @@ class DecimalEncoder(json.JSONEncoder):
 
 def lambda_return(body):
     return_object = {
+        "headers": {
+            "Access-Control-Allow-Origin": "'*'"
+        },
         "statusCode": 200,
         "body": json.dumps(body, cls=DecimalEncoder)
     }
@@ -24,10 +27,8 @@ def lambda_return(body):
 
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
-
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('Leaderboards')
-
     userID = event['pathParameters']['userId']
     item = table.get_item(Key={'userID': userID})['Item']
     return lambda_return(item)
