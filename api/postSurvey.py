@@ -12,10 +12,8 @@ def marshalNode(node):
 
 def marshalValue(value):
     data = {}
-    if isinstance(value, basestring):
+    if isinstance(value, basestring) or isinstance(value, int) or isinstance(value, long) or isinstance(value, float):
         data["S"] = value
-    elif isinstance(value, int) or isinstance(value, long) or isinstance(value, float):
-        data["N"] = str(value)
     elif isinstance(value, list):
         data["L"] = [marshalValue(x) for x in value]
     elif isinstance(value, dict):
