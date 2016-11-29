@@ -1,8 +1,8 @@
 #!/bin/env ruby
 
-Dir.chdir('/home/ec2-user/api')
+Dir.chdir('/home/ec2-user/usgbc/api')
 
-`del usgbc.zip`
+`del usgbc.zip` if File.exist?('usgbc.zip')
 `pip install geopy -t .`
 `zip usgbc.zip -r .`
 
