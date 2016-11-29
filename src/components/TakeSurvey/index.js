@@ -13,7 +13,12 @@ export default class TakeSurvey extends Component {
   }
 
   componentDidMount() {
-    fetch(`/prod/surveys/${this.props.params.surveyId}`)
+    var request = new Request(`https://3twwdo05lg.execute-api.us-west-2.amazonaws.com/prod/surveys/${this.props.params.surveyId}`, {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    });
+    fetch(request)
       .then(response => response.json())
       .then(json => {
         console.log(json);

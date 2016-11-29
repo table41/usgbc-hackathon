@@ -2,7 +2,6 @@
   "name": "usgbc-hackathon",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://3twwdo05lg.execute-api.us-west-2.amazonaws.com/",
   "devDependencies": {
     "react-scripts": "0.7.0"
   },
