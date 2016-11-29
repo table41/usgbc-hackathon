@@ -8,9 +8,9 @@ import boto3
 
 def location_within_range(current, survey):
     print(json.dumps(survey))
-    survey_loc = (int(survey['lon']), int(survey['lat']))
+    survey_loc = (float(survey['lon']), float(survey['lat']))
     distance = vincenty(survey_loc, current).meters
-    if distance <= int(survey['radius']):
+    if distance <= float(survey['radius']):
         if distance == 0:
             distance = 1
         return distance
@@ -23,7 +23,7 @@ def extract_current_location(queryStringParameters):
     lon = queryStringParameters.get('lon', False)
     lat = queryStringParameters.get('lat', False)
     if lon and lat:
-        return (int(lon), int(lat))
+        return (float(lon), float(lat))
     else:
         return False
 
