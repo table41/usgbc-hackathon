@@ -42,8 +42,8 @@ export default class CreateSurvey extends Component {
                 <ControlLabel>Answer Type</ControlLabel>
                 <FormControl componentClass="select" placeholder="Select a Type">
                   <option value="select">Select a Type</option>
-                  <option>Star Rating</option>
-                  <option>Free Text</option>
+                  <option value="star-rating">Star Rating</option>
+                  <option value="free-text">Free Text</option>
                 </FormControl>
               </FormGroup>
             </Row>

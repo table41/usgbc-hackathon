@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Grid, Row } from 'react-bootstrap';
+//import { Grid, Row } from 'react-bootstrap';
+import Survey from '../Survey';
 
 import './style.css';
 
@@ -25,14 +26,10 @@ export default class TakeSurvey extends Component {
 
   render() {
     const className = this.props.className;
+    console.log('Current State', this.state);
     return (
       <div className={classnames('TakeSurvey', className)}>
-        <Grid>
-          <Row>
-            <h1>Take Survey: {this.props.params.surveyId}</h1>
-            <p>{this.state.surveyData ? this.state.surveyData.name : '' }</p>
-          </Row>
-        </Grid>
+        <Survey data={ this.state.surveyData || {} } />
       </div>
     );
   }
