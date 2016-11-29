@@ -27,6 +27,9 @@ def unmarshalValue(node, mapAsObject):
 
 def lambda_return(body):
     return_object = {
+        "headers": {
+            "Access-Control-Allow-Origin:": "*"
+        },
         "statusCode": 200,
         "body": json.dumps(body)
     }
