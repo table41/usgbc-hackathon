@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import cookie from 'react-cookie';
+//import cookie from 'react-cookie';
 import FacebookLogin from 'react-facebook-login';
 import logo from './logo.png';
 import './style.css';
@@ -10,11 +10,11 @@ class App extends Component {
     super(props);
     if (!this.state) {
       this.state = {}
-      var cookieState = cookie.load('fbObject');
+      //var cookieState = cookie.load('fbObject');
     }
 
   }
-  
+
   render() {
     const className = this.props.className;
     const {children} = this.props;
@@ -24,7 +24,7 @@ class App extends Component {
       this.setState({
         fbObject: response
       });
-      
+
     };
 
     return (
