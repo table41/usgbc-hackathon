@@ -55,7 +55,7 @@ const Question = ({prompt, type, answers, index}) => {
   );
 };
 
-const Survey = ({data}) => {
+const Survey = ({data, handleClick}) => {
   const questions = data.questions || [];
   return (
     <Grid>
@@ -70,7 +70,7 @@ const Survey = ({data}) => {
         );
       }) }
       <Row>
-        <Button type="submit" bsStyle="primary">
+        <Button type="button" bsStyle="primary" onClick={handleClick}>
           Save
         </Button>
       </Row>

@@ -29,12 +29,16 @@ export default class TakeSurvey extends Component {
       });
   }
 
+  handleClick = (e) => {
+    this.props.router.push('/home');
+  }
+
   render() {
     const className = this.props.className;
     console.log('Current State', this.state);
     return (
       <div className={classnames('TakeSurvey', className)}>
-        <Survey data={ this.state.surveyData || {} } />
+        <Survey data={ this.state.surveyData || {} } handleClick={this.handleClick}/>
       </div>
     );
   }
