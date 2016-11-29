@@ -38,11 +38,15 @@ def location_within_range(current, survey):
     survey_loc = (int(survey['lon']), int(survey['lat']))
     distance = vincenty(survey_loc, current).meters
     if distance <= int(survey['radius']):
+        if distance == 0:
+            distance = 1
         return distance
     else:
         return False
 
 def extract_current_location(queryStringParameters):
+    if queryStringParameters == None:
+        queryStringParameters = {}
     lon = queryStringParameters.get('lon', False)
     lat = queryStringParameters.get('lat', False)
     if lon and lat:
