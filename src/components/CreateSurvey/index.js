@@ -16,15 +16,15 @@ export default class CreateSurvey extends Component {
         className={classnames('CreateSurvey', className)}>
         <Grid>
           <Row>
-            <h1>Create Survey</h1>
+            <h1>Create Environmental Questionnaire</h1>
           </Row>
           <form>
             <Row>
               <FormGroup controlId="surveyNameInput">
-                <ControlLabel>Name of the Survey</ControlLabel>
+                <ControlLabel>Name of the Environmental Questionnaire</ControlLabel>
                 <FormControl
                   type="text"
-                  placeholder="Enter the name of the Survey"
+                  placeholder="Enter the name of the Environmental Questionnaire"
                 />
               </FormGroup>
             </Row>
