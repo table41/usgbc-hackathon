@@ -14,7 +14,7 @@ aws s3 sync . s3://usgbc-table41
 
 cd /home/ec2-user/usgbc/api
 
-pip intall geopy -t .
+pip install geopy -t .
 
 zip getSurveyById.zip getSurveyById.py
 aws lambda update-function-code --region us-west-2 --function-name getSurveyById --zip-file fileb://getSurveyById.zip
