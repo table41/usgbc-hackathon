@@ -53,6 +53,7 @@ def lambda_handler(event, context):
                           IndexName='survey_id-index',
                           KeyConditionExpression='survey_id = :val',
                           ExpressionAttributeValues={":val": {"S": survey_id}})
+        # No pagination support. May not return all items if response > 1 MB
         for survey_response in query['Items']:
             print("Found SurveyResponse:" + json.dumps(survey_response, indent=2))
             survey_response_list.append(survey_response)
