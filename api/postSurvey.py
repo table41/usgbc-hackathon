@@ -15,7 +15,7 @@ def marshalValue(value):
     if isinstance(value, basestring):
         data["S"] = value
     elif isinstance(value, int) or isinstance(value, long) or isinstance(value, float):
-        data["N"] = str(value)
+        data["S"] = str(value)
     elif isinstance(value, list):
         data["L"] = [marshalValue(x) for x in value]
     elif isinstance(value, dict):
