@@ -5,12 +5,18 @@ import { Grid, Row } from 'react-bootstrap';
 import './style.css';
 
 export default class TakeSurvey extends Component {
-  // static propTypes = {}
-  // static defaultProps = {}
-  // state = {}
+  constructor(props) {
+    super(props);
+    if (!this.state) {
+      this.state = {}
+    }
+  }
+
   componentDidMount() {
-    fetch(`https://3twwdo05lg.execute-api.us-west-2.amazonaws.com/prod/surveys/${this.props.params.surveyId}`)
+    fetch(`/prod/surveys/${this.props.params.surveyId}`)
+      .then(response => response.json())
       .then(json => {
+        console.log(json);
         this.setState({
           surveyData: json
         });
@@ -24,7 +30,7 @@ export default class TakeSurvey extends Component {
         <Grid>
           <Row>
             <h1>Take Survey: {this.props.params.surveyId}</h1>
-            <p>{this.state.surveyData.name}</p>
+            <p>{this.state.surveyData ? this.state.surveyData.name : '' }</p>
           </Row>
         </Grid>
       </div>
