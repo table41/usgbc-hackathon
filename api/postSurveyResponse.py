@@ -4,8 +4,6 @@ from usgbc_helpers import *
 import json
 import urllib
 import boto3
-import googlemaps
-import requests
 
 def lambda_handler(event, context):
     try:
