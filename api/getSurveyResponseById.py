@@ -5,18 +5,14 @@ import json
 import urllib
 import boto3
 
+# handler
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
 
     ddb = boto3.client('dynamodb')
-    paginator = ddb.get_paginator('scan')
-    pages = paginator.paginate(TableName='SurveyResponses')
 
-    survey_response_list = list()
+    response_id = event['pathParameters']['id']
 
-    for page in pages:
-        print("Found SurveyResponses:" + json.dumps(page['Items'], indent=2))
-        for survey_response in page['Items']:
-            survey_response_list.append(survey_response)
+    response = ddb.get_item(TableName='SurveyResponses', Key={'response_id': {'S':response_id}})['Item']
 
-    return lambda_return([unmarshalJson(item) for item in survey_response_list])
+    return lambda_return(unmarshalJson(response))

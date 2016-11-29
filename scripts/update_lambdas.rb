@@ -5,11 +5,12 @@ Dir.chdir('/home/ec2-user/usgbc/api')
 
 `rm -f usgbc.zip` if File.exist?('usgbc.zip')
 `pip install geopy -t .`
+`pip install googlemaps -t .`
 puts `zip usgbc.zip -r .`
 
 lambda = Aws::Lambda::Client.new(region: 'us-west-2')
 
-Dir.glob('*.py').each do |file|
+Dir.glob('*.py').reject{ |f| /helper/.match(f) }.each do |file|
   function_name = file.split('.')[0]
   handler = lambda.get_function_configuration(function_name: function_name).handler
   unless handler == "#{function_name}.lambda_handler"

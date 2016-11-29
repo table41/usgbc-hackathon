@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl, FormGroup, ControlLabel, Radio, Button, Grid, Row } from 'react-bootstrap';
 
-const AnswerCtrl = ({type, answers}) => {
+const AnswerCtrl = ({type, answers, questionNumber}) => {
   if(type === 'free-text') {
     return (
       <FormControl
@@ -13,7 +13,7 @@ const AnswerCtrl = ({type, answers}) => {
       <div>
         {answers.map((answer, index) => {
           return (
-            <Radio key={index}>{answer}</Radio>
+            <Radio name={"question" + questionNumber} key={index}>{answer}</Radio>
           );
         })}
       </div>
@@ -21,11 +21,11 @@ const AnswerCtrl = ({type, answers}) => {
   } else if (type === 'star-rating') {
     return (
       <div>
-        <Radio inline>1</Radio>
-        <Radio inline>2</Radio>
-        <Radio inline>3</Radio>
-        <Radio inline>4</Radio>
-        <Radio inline>5</Radio>
+        <Radio name={"question" + questionNumber} inline>1</Radio>
+        <Radio name={"question" + questionNumber} inline>2</Radio>
+        <Radio name={"question" + questionNumber} inline>3</Radio>
+        <Radio name={"question" + questionNumber} inline>4</Radio>
+        <Radio name={"question" + questionNumber} inline>5</Radio>
       </div>
     );
   } else if (type === 'drop-down') {
@@ -34,7 +34,7 @@ const AnswerCtrl = ({type, answers}) => {
         <option value="select">Choose One</option>
         {answers.map((answer, index) => {
           return (
-            <option key={index}>{answer}</option>
+            <option name={"question" + questionNumber} key={index}>{answer}</option>
           );
         })}
       </FormControl>
@@ -50,7 +50,7 @@ const Question = ({prompt, type, answers, index}) => {
   return (
     <FormGroup controlId={`question${index}`}>
       <ControlLabel>{ prompt }</ControlLabel>
-      <AnswerCtrl type={type} answers={answers} />
+      <AnswerCtrl type={type} answers={answers} questionNumber={index} />
     </FormGroup>
   );
 };
