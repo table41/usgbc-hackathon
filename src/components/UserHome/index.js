@@ -18,6 +18,7 @@ class UserHome extends Component {
     });
 
     var request = new Request(`https://3twwdo05lg.execute-api.us-west-2.amazonaws.com/prod/surveys/?lat=${crd.latitude}&lon=${crd.longitude}`, {
+    //var request = new Request(`https://3twwdo05lg.execute-api.us-west-2.amazonaws.com/prod/surveys/`, {
       headers: new Headers({
         'Content-Type': 'application/json'
       })
@@ -46,12 +47,20 @@ class UserHome extends Component {
 
   render () {
     const className = this.props.className;
+    const surveys = this.state.surveys || [];
     console.log('Current State', this.state);
     return (
       <div className={classnames('UserHome', className)}>
         <Grid>
           <Row>
-            <h1>User Home</h1>
+            <h1>Current Surveys</h1>
+              <ul className="list-group">
+                {surveys.map((survey, index) => (
+                  <li className="list-group-item" key={index}>
+                    <a href={`/survey/${survey.survey_id}/`}>{survey.name}</a>
+                  </li>
+                ))}
+              </ul>
           </Row>
         </Grid>
       </div>
