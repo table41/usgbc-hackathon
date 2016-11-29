@@ -56,7 +56,7 @@ def extract_current_location(queryStringParameters):
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
 
-    current_location = extract_current_location(event['queryStringParameters'])
+    current_location = extract_current_location(event.get('queryStringParameters', {}))
     ddb = boto3.client('dynamodb')
     paginator = ddb.get_paginator('scan')
     pages = paginator.paginate(TableName='Surveys')
