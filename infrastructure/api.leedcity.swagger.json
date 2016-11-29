@@ -106,9 +106,16 @@
         "summary": "Retrieve a list of available Surveys",
         "parameters": [
           {
-            "name": "status",
+            "name": "lon",
             "in": "query",
-            "description": "Filter by current status value",
+            "description": "Filter by current location",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Filter by current location",
             "required": false,
             "type": "string"
           }
@@ -489,7 +496,16 @@
     "SurveyResponse": {
       "type": "object",
       "properties": {
-        "survey": {
+        "response_id": {
+          "type": "string"
+        },
+        "survey_id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "answers": {
           "type": "object"
         }
       }

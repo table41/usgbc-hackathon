@@ -16,3 +16,6 @@ cd /home/ec2-user/usgbc/api
 
 zip getSurveyById.zip getSurveyById.py
 aws lambda update-function-code --region us-west-2 --function-name getSurveyById --zip-file fileb://getSurveyById.zip
+
+zip getSurveys.zip getSurveys.py
+aws lambda update-function-code --region us-west-2 --function-name getSurveys --zip-file fileb://getSurveys.zip
