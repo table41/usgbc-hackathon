@@ -43,8 +43,8 @@ def location_within_range(current, survey):
         return False
 
 def extract_current_location(queryStringParameters):
-    lon = queryStringParameters.fetch('lon', False)
-    lat = queryStringParameters.fetch('lat', False)
+    lon = queryStringParameters.get('lon', False)
+    lat = queryStringParameters.get('lat', False)
     if lon and lat:
         return (int(lon), int(lat))
     else:
