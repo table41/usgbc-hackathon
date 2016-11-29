@@ -46,6 +46,8 @@ def lambda_handler(event, context):
                 if distance:
                     print("Found Survey %s within range %s meters, distance %s" % (survey['survey_id'], survey['location']['radius'], distance))
                     relevant_surveys.append(survey)
+                else:
+                    print("Survey %s out of range %s meters, distance %s" % (survey['survey_id'], survey['location']['radius'], distance))
             else:
                 relevant_surveys.append(survey)
 
