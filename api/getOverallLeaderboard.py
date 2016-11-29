@@ -1,5 +1,5 @@
 from __future__ import print_function
-from usbgc_helpers import *
+from usgbc_helpers import *
 
 import json
 import urllib
