@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import FacebookLogin from 'react-facebook-login';
 import logo from './logo.png';
 import './style.css';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 var options = {
   enableHighAccuracy: true,
@@ -25,7 +26,7 @@ class App extends Component {
     }
   }
 
-  
+
   success = (pos) => {
     var crd = pos.coords;
 
@@ -54,14 +55,23 @@ class App extends Component {
     const className = this.props.className;
     const {children} = this.props;
     console.log(this.state);
-  
+
     return (
       <div className={classnames('App', className)}>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>LEED City</h2>
         </div>
-        <img src={this.state.fbObject ? this.state.fbObject.picture.data.url : ''} alt="facebook" />
+        <Grid>
+          <Row>
+            <Col md={6} className="text-right">
+              <img src={this.state.fbObject ? this.state.fbObject.picture.data.url : ''} alt="facebook" />
+            </Col>
+            <Col md={6} className="text-left">
+              <p>Hello{ this.state.fbObject ? `, ${this.state.fbObject.name}` : '' }</p>
+            </Col>
+          </Row>
+        </Grid>
         {children}
         <div className={this.state.fbObject ? 'hidden' : ''}>
         <FacebookLogin
