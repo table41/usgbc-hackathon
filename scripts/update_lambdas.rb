@@ -1,4 +1,5 @@
 #!/bin/env ruby
+require 'aws-sdk'
 
 Dir.chdir('/home/ec2-user/usgbc/api')
 
