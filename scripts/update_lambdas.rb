@@ -3,7 +3,7 @@ require 'aws-sdk'
 
 Dir.chdir('/home/ec2-user/usgbc/api')
 
-`del usgbc.zip` if File.exist?('usgbc.zip')
+`rm -f usgbc.zip` if File.exist?('usgbc.zip')
 `pip install geopy -t .`
 `zip usgbc.zip -r .`
 
